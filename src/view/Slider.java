@@ -1,4 +1,8 @@
 package view;
 
-public class Slider {
+public class Slider extends Visualisateur{
+    @Override
+    public void update() {
+
+    }
 }
