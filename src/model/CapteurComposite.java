@@ -1,12 +1,9 @@
 package model;
 
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
-import javafx.util.Pair;
+import view.MainWindow;
 import view.info.Composite;
-import view.info.Simple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,30 +21,33 @@ public class CapteurComposite extends CapteurAbstrait{
         return moy;
     }
 
-    public CapteurComposite(String nom) {
-        super(nom);
+    public CapteurComposite(String nom, int poids) {
+        super(nom, poids);
     }
 
     public void addCaptor(CapteurAbstrait c){
         capteurList.add(c);
+        notifier();
     }
 
     public void delCaptor(CapteurAbstrait c){
         capteurList.remove(c);
     }
 
+    public List<CapteurAbstrait> getCapteurList() {
+        return capteurList;
+    }
+
     @Override
-    public Pair<Node, FXMLLoader> display(CapteurAbstrait c){
-        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/fxml/info/composite.fxml"));
-        Node right = new Composite(c);
-        return new Pair<Node, FXMLLoader>(right, fxmlloader);
+    public Node display(CapteurAbstrait c, MainWindow mainWindow){
+        return new Composite((CapteurComposite) c, mainWindow);
     }
 
     @Override
     public void run() {
         while (true) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(super.getTempsGeneration());
                 Platform.runLater(() -> {
                     setTemperature(this.getTempMoy());
                 });

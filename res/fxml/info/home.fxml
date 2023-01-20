@@ -16,26 +16,6 @@
         </HBox>
         <HBox>
             <children>
-                <Label text="Nom du capteur :">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                    </HBox.margin>
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </Label>
-                <TextField fx:id="textFieldNom" onKeyReleased="#onEnter">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                    </HBox.margin>
-                    <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </padding>
-                </TextField>
-            </children>
-        </HBox>
-        <HBox>
-            <children>
                 <Label text="Id :">
                     <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -52,6 +32,46 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                 </Label>
+            </children>
+        </HBox>
+      <HBox>
+         <children>
+             <Label text="Poids">
+                 <HBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                 </HBox.margin>
+                 <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                 </padding>
+             </Label>
+             <Spinner fx:id="spinnerPoids">
+                 <HBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                 </HBox.margin>
+                 <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                 </padding>
+             </Spinner>
+         </children>
+      </HBox>
+        <HBox>
+            <children>
+                <Label text="Nom du capteur :">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </HBox.margin>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </Label>
+                <TextField fx:id="textFieldNom" onKeyReleased="#onEnter">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </HBox.margin>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </TextField>
             </children>
         </HBox>
     </children>

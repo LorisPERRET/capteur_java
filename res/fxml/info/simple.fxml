@@ -78,7 +78,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <ComboBox fx:id="comboBoxGen">
+                  <ComboBox fx:id="comboBoxGen" maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="200.0">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -90,6 +90,12 @@
             </HBox>
          </children>
       </VBox>
-      <Button mnemonicParsing="false" text="Enregistrer" />
+      <Button mnemonicParsing="false" onAction="#save" text="Enregistrer">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding></Button>
    </children>
 </fx:root>

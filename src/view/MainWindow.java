@@ -1,35 +1,23 @@
 package view;
 
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 import model.CapteurAbstrait;
-import model.CapteurComposite;
-import model.CapteurSimple;
-import model.GenerationBornee;
 import view.info.Home;
-import view.info.Simple;
 
 import java.io.IOException;
 
-public class MainWindow {
+public class MainWindow extends Visualisateur{
     @FXML
     public SplitPane splitPane;
     @FXML
-    private TreeView<CapteurAbstrait> treeViewCaptor;
-
-    public void setSplitPane(Node o) {
-        splitPane.getItems().add(1, o);
-    }
+    public TreeView<CapteurAbstrait> treeViewCaptor;
 
     @FXML
     public void onClickButtonSlider(ActionEvent actionEvent) throws IOException {
@@ -51,57 +39,39 @@ public class MainWindow {
         image.show();
     }
 
-
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() {
         TreeItem<CapteurAbstrait> base = new TreeItem<>();
         base.setExpanded(true);
         treeViewCaptor.setRoot(base);
         treeViewCaptor.getSelectionModel().selectedItemProperty().addListener((ChangeListener) (observable, oldValue, newValue) -> {
             TreeItem<CapteurAbstrait> selectedItem = (TreeItem<CapteurAbstrait>) newValue;
-            Pair<Node, FXMLLoader> pair = null;
+            Node node = null;
             if(selectedItem.getValue() != null){
                 try {
-                    pair = selectedItem.getValue().display(selectedItem.getValue());
+                    node = selectedItem.getValue().display(selectedItem.getValue(), this);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                Node right = pair.getKey();
-                FXMLLoader loader = pair.getValue();
-                loader.setController(right);
-                loader.setRoot(right);
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                splitPane.getItems().remove(1);
-                splitPane.getItems().add(1, right);
-                splitPane.setDividerPosition(0, 0.4);
             }
             else{
-                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/fxml/info/home.fxml"));
-                Home right = new Home(treeViewCaptor);
-                fxmlloader.setController(right);
-                fxmlloader.setRoot(right);
-                try {
-                    fxmlloader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                splitPane.getItems().remove(1);
-                splitPane.getItems().add(1, right);
-                splitPane.setDividerPosition(0, 0.4);
+                node = new Home(this);
             }
+            addNode(node);
         });
 
-        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/fxml/info/home.fxml"));
-        Home right = new Home(treeViewCaptor);
-        fxmlloader.setController(right);
-        fxmlloader.setRoot(right);
-        fxmlloader.load();
+        Home right = new Home(this);
         splitPane.getItems().add(1, right);
     }
 
+    public void addNode(Node n){
+        splitPane.getItems().remove(1);
+        splitPane.getItems().add(1, n);
+        splitPane.setDividerPosition(0, 0.3);
+    }
 
+    @Override
+    public void update() {
+        treeViewCaptor.refresh();
+    }
 }

@@ -16,4 +16,9 @@ public class GenerationInterval implements IGenerationStrategie{
         lastTemp = temp;
         return temp;
     }
+
+    @Override
+    public String toString() {
+        return "Génération avec +/-" + d;
+    }
 }

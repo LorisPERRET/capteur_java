@@ -21,7 +21,7 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <StackPane prefHeight="150.0" prefWidth="200.0">
+        <StackPane minHeight="100">
             <children>
                 <Label text="Station météo !" />
             </children>

@@ -1,11 +1,10 @@
 package model;
 
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.util.Pair;
+import view.MainWindow;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public abstract class CapteurAbstrait extends Sujet implements Runnable{
     public static int idActuel = 1;
@@ -15,10 +14,15 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     private int tempsGeneration;
     private IGenerationStrategie generationStrategie;
     private Thread thread;
+    private int poids = 1;
+    public int getPoids() {
+        return poids;
+    }
 
-    public CapteurAbstrait(String nom) {
+    public CapteurAbstrait(String nom, int poids) {
         this.id = idActuel;
         this.nom = nom;
+        this.poids = poids;
         generationStrategie = new GenerationBornee();
         idActuel ++;
         tempsGeneration = 1;
@@ -63,10 +67,23 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     }
 
 
-    public abstract Pair<Node, FXMLLoader> display(CapteurAbstrait c) throws IOException;
+    public abstract Node display(CapteurAbstrait c, MainWindow mainWindow) throws IOException;
 
     @Override
     public String toString() {
         return id + ": " + nom;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        CapteurAbstrait that = (CapteurAbstrait) o;
+        return id == that.id && Objects.equals(nom, that.nom);
+    }
+
+    public void setNom(String n) {
+        this.nom = n;
+        this.notifier();
     }
 }
