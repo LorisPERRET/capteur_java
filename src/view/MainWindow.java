@@ -11,11 +11,13 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 import model.CapteurAbstrait;
 import model.CapteurComposite;
 import model.CapteurSimple;
 import model.GenerationBornee;
 import view.info.Home;
+import view.info.Simple;
 
 import java.io.IOException;
 
@@ -57,7 +59,40 @@ public class MainWindow {
         treeViewCaptor.setRoot(base);
         treeViewCaptor.getSelectionModel().selectedItemProperty().addListener((ChangeListener) (observable, oldValue, newValue) -> {
             TreeItem<CapteurAbstrait> selectedItem = (TreeItem<CapteurAbstrait>) newValue;
-            selectedItem.getValue().display(selectedItem.getValue());
+            Pair<Node, FXMLLoader> pair = null;
+            if(selectedItem.getValue() != null){
+                try {
+                    pair = selectedItem.getValue().display(selectedItem.getValue());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Node right = pair.getKey();
+                FXMLLoader loader = pair.getValue();
+                loader.setController(right);
+                loader.setRoot(right);
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                splitPane.getItems().remove(1);
+                splitPane.getItems().add(1, right);
+                splitPane.setDividerPosition(0, 0.4);
+            }
+            else{
+                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/fxml/info/home.fxml"));
+                Home right = new Home(treeViewCaptor);
+                fxmlloader.setController(right);
+                fxmlloader.setRoot(right);
+                try {
+                    fxmlloader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                splitPane.getItems().remove(1);
+                splitPane.getItems().add(1, right);
+                splitPane.setDividerPosition(0, 0.4);
+            }
         });
 
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/fxml/info/home.fxml"));
@@ -67,4 +102,6 @@ public class MainWindow {
         fxmlloader.load();
         splitPane.getItems().add(1, right);
     }
+
+
 }

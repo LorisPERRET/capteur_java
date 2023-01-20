@@ -1,6 +1,11 @@
 package model;
 
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.util.Pair;
+
+import java.io.IOException;
 
 public abstract class CapteurAbstrait extends Sujet implements Runnable{
     public static int idActuel = 1;
@@ -58,7 +63,7 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     }
 
 
-    public abstract void display(CapteurAbstrait c);
+    public abstract Pair<Node, FXMLLoader> display(CapteurAbstrait c) throws IOException;
 
     @Override
     public String toString() {

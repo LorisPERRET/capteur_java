@@ -1,6 +1,12 @@
 package model;
 
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.layout.VBox;
+import javafx.util.Pair;
+import view.info.Composite;
+import view.info.Simple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +37,10 @@ public class CapteurComposite extends CapteurAbstrait{
     }
 
     @Override
-    public void display(CapteurAbstrait c){
-        System.out.println("composite");
+    public Pair<Node, FXMLLoader> display(CapteurAbstrait c){
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/fxml/info/composite.fxml"));
+        Node right = new Composite(c);
+        return new Pair<Node, FXMLLoader>(right, fxmlloader);
     }
 
     @Override
