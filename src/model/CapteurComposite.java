@@ -31,6 +31,11 @@ public class CapteurComposite extends CapteurAbstrait{
     }
 
     @Override
+    public void display(CapteurAbstrait c){
+        System.out.println("composite");
+    }
+
+    @Override
     public void run() {
         while (true) {
             try {

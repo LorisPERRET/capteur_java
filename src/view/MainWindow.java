@@ -1,8 +1,11 @@
 package view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -12,18 +15,20 @@ import model.CapteurAbstrait;
 import model.CapteurComposite;
 import model.CapteurSimple;
 import model.GenerationBornee;
+import view.info.Home;
 
 import java.io.IOException;
 
 public class MainWindow {
     @FXML
+    public SplitPane splitPane;
+    @FXML
     private TreeView<CapteurAbstrait> treeViewCaptor;
-    @FXML
-    private ComboBox<String> comboBoxType;
-    @FXML
-    private TextField textFieldNom;
-    @FXML
-    private Label labelId;
+
+    public void setSplitPane(Node o) {
+        splitPane.getItems().add(1, o);
+    }
+
     @FXML
     public void onClickButtonSlider(ActionEvent actionEvent) throws IOException {
         Stage slider = new Stage();
@@ -46,37 +51,20 @@ public class MainWindow {
 
 
     @FXML
-    public void initialize(){
-        comboBoxType.getItems().add("Simple");
-        comboBoxType.getItems().add("Composite");
-        comboBoxType.setValue("Simple");
-
-        labelId.setText(String.valueOf(CapteurAbstrait.idActuel));
-
+    public void initialize() throws IOException {
         TreeItem<CapteurAbstrait> base = new TreeItem<>();
         base.setExpanded(true);
         treeViewCaptor.setRoot(base);
-    }
+        treeViewCaptor.getSelectionModel().selectedItemProperty().addListener((ChangeListener) (observable, oldValue, newValue) -> {
+            TreeItem<CapteurAbstrait> selectedItem = (TreeItem<CapteurAbstrait>) newValue;
+            selectedItem.getValue().display(selectedItem.getValue());
+        });
 
-    public void onEnter(KeyEvent inputMethodEvent) {
-        if(inputMethodEvent.getCode() == KeyCode.ENTER){
-            String type = comboBoxType.getValue().toString();
-            String nom = textFieldNom.getText();
-            CapteurAbstrait capteur;
-            TreeItem<CapteurAbstrait> item;
-
-            switch (type){
-                case "Composite":
-                    capteur = new CapteurComposite(nom);
-                    item = new TreeItem<>(capteur);
-                    item.setExpanded(true);
-                    break;
-                default:
-                    capteur = new CapteurSimple(nom);
-                    item = new TreeItem<>(capteur);
-            }
-            treeViewCaptor.getRoot().getChildren().add(item);
-            labelId.setText(String.valueOf(CapteurAbstrait.idActuel));
-        }
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/fxml/info/home.fxml"));
+        Home right = new Home(treeViewCaptor);
+        fxmlloader.setController(right);
+        fxmlloader.setRoot(right);
+        fxmlloader.load();
+        splitPane.getItems().add(1, right);
     }
 }

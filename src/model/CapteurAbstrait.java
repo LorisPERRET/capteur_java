@@ -7,6 +7,7 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     private int id;
     private String nom;
     private double temperature;
+    private int tempsGeneration;
     private IGenerationStrategie generationStrategie;
     private Thread thread;
 
@@ -15,6 +16,7 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
         this.nom = nom;
         generationStrategie = new GenerationBornee();
         idActuel ++;
+        tempsGeneration = 1;
         thread = new Thread(this);
         thread.setDaemon(true);
         thread.start();
@@ -34,6 +36,14 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
 
     public abstract double getTempMoy();
 
+    public void setTempsGeneration(int tempsGeneration) {
+        this.tempsGeneration = tempsGeneration;
+    }
+
+    public int getTempsGeneration() {
+        return tempsGeneration;
+    }
+
     public IGenerationStrategie getGenerationStrategie() {
         return generationStrategie;
     }
@@ -46,6 +56,9 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     public void setGenerationStrategie(IGenerationStrategie generation) {
         this.generationStrategie = generation;
     }
+
+
+    public abstract void display(CapteurAbstrait c);
 
     @Override
     public String toString() {

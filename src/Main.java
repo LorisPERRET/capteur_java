@@ -15,19 +15,19 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        Stage slider = new Stage();
-        FXMLLoader loaderSlider = new FXMLLoader(getClass().getResource("/fxml/SliderWindow.fxml"));
-        loaderSlider.setController(new Slider());
-        Scene sceneSlider = new Scene(loaderSlider.load(), 200, 100);
-        slider.setScene(sceneSlider);
-        slider.show();
-
-        Stage image = new Stage();
-        FXMLLoader loaderImage = new FXMLLoader(getClass().getResource("/fxml/ImageWindow.fxml"));
-        loaderImage.setController(new Image());
-        Scene sceneImage = new Scene(loaderImage.load(), 200, 100);
-        image.setScene(sceneImage);
-        image.show();
+//        Stage slider = new Stage();
+//        FXMLLoader loaderSlider = new FXMLLoader(getClass().getResource("/fxml/SliderWindow.fxml"));
+//        loaderSlider.setController(new Slider());
+//        Scene sceneSlider = new Scene(loaderSlider.load(), 200, 100);
+//        slider.setScene(sceneSlider);
+//        slider.show();
+//
+//        Stage image = new Stage();
+//        FXMLLoader loaderImage = new FXMLLoader(getClass().getResource("/fxml/ImageWindow.fxml"));
+//        loaderImage.setController(new Image());
+//        Scene sceneImage = new Scene(loaderImage.load(), 200, 100);
+//        image.setScene(sceneImage);
+//        image.show();
     }
 
     public static void main(String[] args) {
