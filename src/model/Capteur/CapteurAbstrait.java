@@ -5,7 +5,6 @@ import model.Generation.GenerationBornee;
 import model.Generation.IGenerationStrategie;
 import model.Sujet;
 import view.MainWindow;
-
 import java.io.IOException;
 import java.util.Objects;
 

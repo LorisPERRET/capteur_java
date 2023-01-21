@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 import model.IObserveur;
-
 import java.io.IOException;
 
 public abstract class Visualisateur implements IObserveur {

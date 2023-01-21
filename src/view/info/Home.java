@@ -10,7 +10,6 @@ import model.Capteur.CapteurAbstrait;
 import model.Capteur.CapteurComposite;
 import model.Capteur.CapteurSimple;
 import view.MainWindow;
-
 import java.io.IOException;
 import java.util.Objects;
 

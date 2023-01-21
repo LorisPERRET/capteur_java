@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import view.MainWindow;
 import view.info.Composite;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -9,7 +9,6 @@ import model.Capteur.CapteurSimple;
 import model.Generation.GenerationBornee;
 import model.Generation.GenerationInterval;
 import view.MainWindow;
-
 import java.io.IOException;
 
 public class Simple extends VBox {
