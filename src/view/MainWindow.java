@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Capteur.CapteurAbstrait;
 import view.info.Home;
-
 import java.io.IOException;
 
 public class MainWindow extends Visualisateur{
@@ -18,6 +17,32 @@ public class MainWindow extends Visualisateur{
     public SplitPane splitPane;
     @FXML
     public TreeView<CapteurAbstrait> treeViewCaptor;
+
+    @FXML
+    public void initialize() throws IOException {
+        TreeItem<CapteurAbstrait> base = new TreeItem<>();
+        base.setExpanded(true);
+        treeViewCaptor.setRoot(base);
+        treeViewCaptor.getSelectionModel().selectedItemProperty().addListener((ChangeListener) (observable, oldValue, newValue) -> {
+            TreeItem<CapteurAbstrait> selectedItem = (TreeItem<CapteurAbstrait>) newValue;
+            Node node = null;
+            if(selectedItem.getValue() != null){
+                try {
+                    node = selectedItem.getValue().display(selectedItem.getValue(), this);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            else{
+                node = new Home(this);
+            }
+            addNode(node);
+        });
+
+        Home right = new Home(this);
+        splitPane.getItems().add(1, right);
+        splitPane.setDividerPosition(0, 0.3);
+    }
 
     @FXML
     public void onClickButtonSlider(ActionEvent actionEvent) throws IOException {
@@ -65,32 +90,6 @@ public class MainWindow extends Visualisateur{
                 image.show();
             }
         }
-    }
-
-    @FXML
-    public void initialize() throws IOException {
-        TreeItem<CapteurAbstrait> base = new TreeItem<>();
-        base.setExpanded(true);
-        treeViewCaptor.setRoot(base);
-        treeViewCaptor.getSelectionModel().selectedItemProperty().addListener((ChangeListener) (observable, oldValue, newValue) -> {
-            TreeItem<CapteurAbstrait> selectedItem = (TreeItem<CapteurAbstrait>) newValue;
-            Node node = null;
-            if(selectedItem.getValue() != null){
-                try {
-                    node = selectedItem.getValue().display(selectedItem.getValue(), this);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            else{
-                node = new Home(this);
-            }
-            addNode(node);
-        });
-
-        Home right = new Home(this);
-        splitPane.getItems().add(1, right);
-        splitPane.setDividerPosition(0, 0.3);
     }
 
     public void addNode(Node n){

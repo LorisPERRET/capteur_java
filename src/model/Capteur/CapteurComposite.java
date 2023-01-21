@@ -11,6 +11,14 @@ import java.util.List;
 public class CapteurComposite extends CapteurAbstrait{
     List<CapteurAbstrait> capteurList = new ArrayList<>();
 
+    public CapteurComposite(String nom, int poids) {
+        super(nom, poids);
+    }
+
+    public List<CapteurAbstrait> getCapteurList() {
+        return capteurList;
+    }
+
     @Override
     public double getTempMoy(){
         double moy = 0;
@@ -23,21 +31,9 @@ public class CapteurComposite extends CapteurAbstrait{
         return moy;
     }
 
-    public CapteurComposite(String nom, int poids) {
-        super(nom, poids);
-    }
-
     public void addCaptor(CapteurAbstrait c){
         capteurList.add(c);
         notifier();
-    }
-
-    public void delCaptor(CapteurAbstrait c){
-        capteurList.remove(c);
-    }
-
-    public List<CapteurAbstrait> getCapteurList() {
-        return capteurList;
     }
 
     @Override

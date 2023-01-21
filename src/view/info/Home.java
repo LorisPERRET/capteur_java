@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Home extends VBox {
-
     private MainWindow mainWindow;
     @FXML
     private ComboBox<String> comboBoxType;

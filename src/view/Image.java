@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Rectangle;
 import model.Capteur.CapteurAbstrait;
-
 import static javafx.scene.paint.Color.*;
 
 public class Image extends Visualisateur{

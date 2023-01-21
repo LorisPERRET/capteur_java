@@ -18,9 +18,6 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     private IGenerationStrategie generationStrategie;
     private Thread thread;
     private int poids = 1;
-    public int getPoids() {
-        return poids;
-    }
 
     public CapteurAbstrait(String nom, int poids) {
         this.id = idActuel;
@@ -41,34 +38,38 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     public String getNom() {
         return nom;
     }
+    public void setNom(String n) {
+        this.nom = n;
+        this.notifier();
+    }
 
     public double getTemperature() {
         return temperature;
     }
-
-    public abstract double getTempMoy();
-
-    public void setTempsGeneration(int tempsGeneration) {
-        this.tempsGeneration = tempsGeneration;
-    }
-
-    public int getTempsGeneration() {
-        return tempsGeneration;
-    }
-
-    public IGenerationStrategie getGenerationStrategie() {
-        return generationStrategie;
-    }
-
     public void setTemperature(double temp) {
         this.temperature = temp;
         this.notifier();
     }
 
+    public abstract double getTempMoy();
+
+    public int getPoids() {
+        return poids;
+    }
+
+    public int getTempsGeneration() {
+        return tempsGeneration;
+    }
+    public void setTempsGeneration(int tempsGeneration) {
+        this.tempsGeneration = tempsGeneration;
+    }
+
+    public IGenerationStrategie getGenerationStrategie() {
+        return generationStrategie;
+    }
     public void setGenerationStrategie(IGenerationStrategie generation) {
         this.generationStrategie = generation;
     }
-
 
     public abstract Node display(CapteurAbstrait c, MainWindow mainWindow) throws IOException;
 
@@ -83,10 +84,5 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
         if (o == null) return false;
         CapteurAbstrait that = (CapteurAbstrait) o;
         return id == that.id && Objects.equals(nom, that.nom);
-    }
-
-    public void setNom(String n) {
-        this.nom = n;
-        this.notifier();
     }
 }

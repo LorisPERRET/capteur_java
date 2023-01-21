@@ -9,12 +9,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import model.*;
-import model.Capteur.CapteurAbstrait;
-import model.Capteur.CapteurComposite;
-import model.Capteur.CapteurModel;
-import model.Capteur.CapteurSimple;
+import model.Capteur.*;
 import view.MainWindow;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -113,12 +109,6 @@ public class Composite extends VBox implements IObserveur {
         }
     }
 
-    @Override
-    public void update() {
-        tableView.refresh();
-    }
-
-
     public TreeItem<CapteurAbstrait> recherche(ObservableList<TreeItem<CapteurAbstrait>> fils, int id){
         if(fils.size() == 0) return null;
         for (TreeItem<CapteurAbstrait> treeItem : fils) {
@@ -132,5 +122,10 @@ public class Composite extends VBox implements IObserveur {
             }
         }
         return null;
+    }
+
+    @Override
+    public void update() {
+        tableView.refresh();
     }
 }

@@ -1,10 +1,10 @@
 package view;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import model.Capteur.CapteurAbstrait;
 
 public class Slider extends Visualisateur{
-
     private CapteurAbstrait capteur;
     @FXML
     private javafx.scene.control.Slider slider;

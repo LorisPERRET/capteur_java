@@ -10,6 +10,8 @@ import model.Capteur.CapteurAbstrait;
 
 public class Graph extends Visualisateur{
     private CapteurAbstrait capteur;
+    private static int time = 0;
+    private XYChart.Series series;
     @FXML
     private Label labelCapteur;
     @FXML
@@ -18,8 +20,6 @@ public class Graph extends Visualisateur{
     private NumberAxis y;
     @FXML
     private LineChart<?, ?> lineChart;
-    private static int time = 0;
-    private XYChart.Series series;
 
     public Graph(CapteurAbstrait capteur) {
         this.capteur = capteur;

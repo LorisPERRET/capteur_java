@@ -6,7 +6,6 @@ import view.MainWindow;
 import view.info.Simple;
 
 public class CapteurSimple extends CapteurAbstrait{
-
     public CapteurSimple(String nom, int poids) {
         super(nom, poids);
     }
