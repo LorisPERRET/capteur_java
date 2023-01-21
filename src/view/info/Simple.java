@@ -5,7 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import model.*;
+import model.Capteur.CapteurSimple;
+import model.Generation.GenerationBornee;
+import model.Generation.GenerationInterval;
 import view.MainWindow;
 
 import java.io.IOException;

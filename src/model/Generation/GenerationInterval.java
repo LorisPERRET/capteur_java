@@ -1,4 +1,4 @@
-package model;
+package model.Generation;
 
 public class GenerationInterval implements IGenerationStrategie{
     private int d;

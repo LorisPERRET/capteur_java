@@ -1,4 +1,4 @@
-package model;
+package model.Capteur;
 
 import javafx.application.Platform;
 import javafx.scene.Node;
@@ -25,7 +25,7 @@ public class CapteurSimple extends CapteurAbstrait{
     public void run() {
         while (true) {
             try {
-                Thread.sleep(super.getTempsGeneration());
+                Thread.sleep(super.getTempsGeneration()*1000);
                 Platform.runLater(() -> {
                     setTemperature(super.getGenerationStrategie().generer());
                 });

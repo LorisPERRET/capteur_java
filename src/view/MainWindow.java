@@ -8,7 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.CapteurAbstrait;
+import model.Capteur.CapteurAbstrait;
 import view.info.Home;
 
 import java.io.IOException;
@@ -21,26 +21,54 @@ public class MainWindow extends Visualisateur{
 
     @FXML
     public void onClickButtonSlider(ActionEvent actionEvent) throws IOException {
-        Stage slider = new Stage();
-        FXMLLoader loaderSlider = new FXMLLoader(getClass().getResource("/fxml/SliderWindow.fxml"));
-        loaderSlider.setController(new Slider());
-        Scene sceneSlider = new Scene(loaderSlider.load(), 200, 100);
-        slider.setScene(sceneSlider);
-        slider.show();
+        TreeItem<CapteurAbstrait> treeItem = treeViewCaptor.getSelectionModel().getSelectedItem();
+        if(treeItem != null){
+            CapteurAbstrait capteur = treeViewCaptor.getSelectionModel().getSelectedItem().getValue();
+            if(capteur != null){
+                Stage slider = new Stage();
+                FXMLLoader loaderSlider = new FXMLLoader(getClass().getResource("/fxml/SliderWindow.fxml"));
+                loaderSlider.setController(new Slider(capteur));
+                Scene sceneSlider = new Scene(loaderSlider.load(), 300, 400);
+                slider.setScene(sceneSlider);
+                slider.show();
+            }
+        }
     }
 
     @FXML
     public void onClickButtonImage(ActionEvent actionEvent) throws IOException {
-        Stage image = new Stage();
-        FXMLLoader loaderImage = new FXMLLoader(getClass().getResource("/fxml/ImageWindow.fxml"));
-        loaderImage.setController(new Image());
-        Scene sceneImage = new Scene(loaderImage.load(), 200, 100);
-        image.setScene(sceneImage);
-        image.show();
+        TreeItem<CapteurAbstrait> treeItem = treeViewCaptor.getSelectionModel().getSelectedItem();
+        if(treeItem != null) {
+            CapteurAbstrait capteur = treeViewCaptor.getSelectionModel().getSelectedItem().getValue();
+            if (capteur != null) {
+                Stage image = new Stage();
+                FXMLLoader loaderImage = new FXMLLoader(getClass().getResource("/fxml/ImageWindow.fxml"));
+                loaderImage.setController(new Image(capteur));
+                Scene sceneImage = new Scene(loaderImage.load(), 500, 250);
+                image.setScene(sceneImage);
+                image.show();
+            }
+        }
     }
 
     @FXML
-    public void initialize() {
+    public void onClickButtonGraph(ActionEvent actionEvent) throws IOException {
+        TreeItem<CapteurAbstrait> treeItem = treeViewCaptor.getSelectionModel().getSelectedItem();
+        if(treeItem != null) {
+            CapteurAbstrait capteur = treeViewCaptor.getSelectionModel().getSelectedItem().getValue();
+            if (capteur != null) {
+                Stage image = new Stage();
+                FXMLLoader loaderGraph = new FXMLLoader(getClass().getResource("/fxml/GraphWindow.fxml"));
+                loaderGraph.setController(new Graph(capteur));
+                Scene sceneImage = new Scene(loaderGraph.load(), 600, 250);
+                image.setScene(sceneImage);
+                image.show();
+            }
+        }
+    }
+
+    @FXML
+    public void initialize() throws IOException {
         TreeItem<CapteurAbstrait> base = new TreeItem<>();
         base.setExpanded(true);
         treeViewCaptor.setRoot(base);
@@ -62,6 +90,7 @@ public class MainWindow extends Visualisateur{
 
         Home right = new Home(this);
         splitPane.getItems().add(1, right);
+        splitPane.setDividerPosition(0, 0.3);
     }
 
     public void addNode(Node n){

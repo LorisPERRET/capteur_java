@@ -1,16 +1,14 @@
 package view.info;
 
-import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
-import model.CapteurAbstrait;
-import model.CapteurComposite;
-import model.CapteurSimple;
+import model.Capteur.CapteurAbstrait;
+import model.Capteur.CapteurComposite;
+import model.Capteur.CapteurSimple;
 import view.MainWindow;
 
 import java.io.IOException;

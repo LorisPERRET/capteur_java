@@ -19,6 +19,11 @@
                         <MenuItem mnemonicParsing="false" onAction="#onClickButtonSlider" text="New" />
                     </items>
                 </Menu>
+                <Menu mnemonicParsing="false" text="Graphe">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onClickButtonGraph" text="New" />
+                    </items>
+                </Menu>
             </menus>
         </MenuBar>
         <StackPane minHeight="100">

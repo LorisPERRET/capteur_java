@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml">
-    <Button mnemonicParsing="false" onAction="#onClickFermer" text="Fermer" />
-</AnchorPane>
+<HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0">
+            <children>
+                <Label text="Image météo" />
+                <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="RED" height="200.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onClickFermer" text="Fermer" />
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <Label text="Id capteur :" />
+                        <Label fx:id="labelCapteur" />
+                    </children>
+                    <padding>
+                        <Insets right="50.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</HBox>

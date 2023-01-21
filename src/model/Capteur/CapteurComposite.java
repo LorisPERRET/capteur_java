@@ -1,4 +1,4 @@
-package model;
+package model.Capteur;
 
 import javafx.application.Platform;
 import javafx.scene.Node;
@@ -14,10 +14,12 @@ public class CapteurComposite extends CapteurAbstrait{
     @Override
     public double getTempMoy(){
         double moy = 0;
+        int poids = 1;
         for (CapteurAbstrait c : capteurList) {
             moy += c.getTempMoy();
+            poids += c.getPoids();
         }
-        moy /= capteurList.size();
+        moy /= poids;
         return moy;
     }
 
@@ -47,7 +49,7 @@ public class CapteurComposite extends CapteurAbstrait{
     public void run() {
         while (true) {
             try {
-                Thread.sleep(super.getTempsGeneration());
+                Thread.sleep(super.getTempsGeneration()*1000);
                 Platform.runLater(() -> {
                     setTemperature(this.getTempMoy());
                 });

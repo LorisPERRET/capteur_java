@@ -9,6 +9,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import model.*;
+import model.Capteur.CapteurAbstrait;
+import model.Capteur.CapteurComposite;
+import model.Capteur.CapteurModel;
+import model.Capteur.CapteurSimple;
 import view.MainWindow;
 
 import java.io.IOException;

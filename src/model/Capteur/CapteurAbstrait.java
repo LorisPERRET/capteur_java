@@ -1,6 +1,9 @@
-package model;
+package model.Capteur;
 
 import javafx.scene.Node;
+import model.Generation.GenerationBornee;
+import model.Generation.IGenerationStrategie;
+import model.Sujet;
 import view.MainWindow;
 
 import java.io.IOException;
