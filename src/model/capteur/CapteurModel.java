@@ -1,4 +1,4 @@
-package model.Capteur;
+package model.capteur;
 
 public class CapteurModel {
     private Integer poids;

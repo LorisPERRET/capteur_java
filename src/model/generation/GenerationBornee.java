@@ -1,4 +1,4 @@
-package model.Generation;
+package model.generation;
 
 public class GenerationBornee implements IGenerationStrategie{
     private double borneInf;

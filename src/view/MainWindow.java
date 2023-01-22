@@ -8,7 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.Capteur.CapteurAbstrait;
+import model.capteur.CapteurAbstrait;
 import view.info.Home;
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class MainWindow extends Visualisateur{
     public TreeView<CapteurAbstrait> treeViewCaptor;
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize(){
         TreeItem<CapteurAbstrait> base = new TreeItem<>();
         base.setExpanded(true);
         treeViewCaptor.setRoot(base);

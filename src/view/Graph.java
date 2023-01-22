@@ -6,7 +6,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
-import model.Capteur.CapteurAbstrait;
+import model.capteur.CapteurAbstrait;
 
 public class Graph extends Visualisateur{
     private CapteurAbstrait capteur;

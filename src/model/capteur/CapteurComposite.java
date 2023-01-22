@@ -1,4 +1,4 @@
-package model.Capteur;
+package model.capteur;
 
 import javafx.application.Platform;
 import javafx.scene.Node;

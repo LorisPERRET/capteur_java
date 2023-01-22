@@ -5,13 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import model.Capteur.CapteurSimple;
-import model.Generation.GenerationBornee;
-import model.Generation.GenerationCPU;
-import model.Generation.GenerationInterval;
+import model.capteur.CapteurSimple;
+import model.generation.GenerationBornee;
+import model.generation.GenerationInterval;
 import view.MainWindow;
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 public class Simple extends VBox {
     private CapteurSimple capteurSimple;

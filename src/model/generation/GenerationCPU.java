@@ -1,4 +1,4 @@
-package model.Generation;
+package model.generation;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

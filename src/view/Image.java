@@ -3,8 +3,7 @@ package view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import model.Capteur.CapteurAbstrait;
-import static javafx.scene.paint.Color.*;
+import model.capteur.CapteurAbstrait;
 
 public class Image extends Visualisateur{
     private CapteurAbstrait capteur;

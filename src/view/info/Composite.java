@@ -11,7 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import model.*;
-import model.Capteur.*;
+import model.capteur.*;
 import view.MainWindow;
 import java.io.IOException;
 import java.util.Objects;
