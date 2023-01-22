@@ -33,6 +33,8 @@ public class Graph extends Visualisateur{
         labelCapteur.setText(id);
 
         series.getData().add(new XYChart.Data(Integer.toString(time), capteur.getTemperature()));
+        series.setName("Évolution de la température");
+
         lineChart.getData().addAll(series);
         lineChart.setCreateSymbols(false);
     }
@@ -41,7 +43,7 @@ public class Graph extends Visualisateur{
     public void update() {
         time++;
         series.getData().add(new XYChart.Data(Integer.toString(time), capteur.getTemperature()));
-        if (series.getData().size() > 10)
+        if (series.getData().size() > 25)
             series.getData().remove(0);
     }
 }

@@ -58,12 +58,12 @@ public class Home extends VBox {
             if(!Objects.equals(nom, "")) {
                 switch (type) {
                     case "Composite":
-                        capteur = new CapteurComposite(nom, poids);
+                        capteur = new CapteurComposite(nom);
                         item = new TreeItem<>(capteur);
                         item.setExpanded(true);
                         break;
                     default:
-                        capteur = new CapteurSimple(nom, poids);
+                        capteur = new CapteurSimple(nom);
                         item = new TreeItem<>(capteur);
                 }
                 capteur.attacher(mainWindow);

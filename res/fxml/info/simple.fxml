@@ -88,6 +88,18 @@
                   </ComboBox>
                </children>
             </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ToggleButton fx:id="toggleButtonActive" mnemonicParsing="false" text="Désactiver température">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </ToggleButton>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <Button mnemonicParsing="false" onAction="#save" text="Enregistrer">

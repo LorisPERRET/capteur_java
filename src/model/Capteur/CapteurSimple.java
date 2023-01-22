@@ -6,8 +6,8 @@ import view.MainWindow;
 import view.info.Simple;
 
 public class CapteurSimple extends CapteurAbstrait{
-    public CapteurSimple(String nom, int poids) {
-        super(nom, poids);
+    public CapteurSimple(String nom) {
+        super(nom);
     }
 
     @Override
@@ -25,9 +25,11 @@ public class CapteurSimple extends CapteurAbstrait{
         while (true) {
             try {
                 Thread.sleep(super.getTempsGeneration()*1000);
-                Platform.runLater(() -> {
-                    setTemperature(super.getGenerationStrategie().generer());
-                });
+                if(this.isActive()){
+                    Platform.runLater(() -> {
+                        setTemperature(this.getGenerationStrategie().generer());
+                    });
+                }
             } catch (InterruptedException e) {
                 break;
             }

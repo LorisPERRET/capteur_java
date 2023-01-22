@@ -2,14 +2,14 @@ package view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.ImageView;
 import model.Capteur.CapteurAbstrait;
 import static javafx.scene.paint.Color.*;
 
 public class Image extends Visualisateur{
     private CapteurAbstrait capteur;
     @FXML
-    private Rectangle rectangle;
+    private ImageView imageView;
     @FXML
     private Label labelCapteur;
     public Image(CapteurAbstrait capteur) {
@@ -25,17 +25,19 @@ public class Image extends Visualisateur{
     }
 
     public void couleur(double temp){
+        javafx.scene.image.Image image;
         if(temp < 22){
             if(temp < 0){
-                rectangle.setFill(DODGERBLUE);
+                image = new javafx.scene.image.Image("img/neige.jpg");
             }
             else{
-                rectangle.setFill(GREEN);
+                image = new javafx.scene.image.Image("img/nuage.jpg");
             }
         }
         else{
-            rectangle.setFill(RED);
+            image = new javafx.scene.image.Image("img/soleil.jpg");
         }
+        imageView.setImage(image);
     }
 
     @Override

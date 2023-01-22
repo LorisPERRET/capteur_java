@@ -17,11 +17,13 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     private IGenerationStrategie generationStrategie;
     private Thread thread;
     private int poids = 1;
+    private boolean active;
 
-    public CapteurAbstrait(String nom, int poids) {
-        this.id = idActuel;
+    public CapteurAbstrait(String nom) {
+        id = idActuel;
         this.nom = nom;
-        this.poids = poids;
+        poids = 1;
+        active = true;
         generationStrategie = new GenerationBornee();
         idActuel ++;
         tempsGeneration = 1;
@@ -37,9 +39,9 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     public String getNom() {
         return nom;
     }
-    public void setNom(String n) {
-        this.nom = n;
-        this.notifier();
+    public void setNom(String nom) {
+        this.nom = nom;
+        notifier();
     }
 
     public double getTemperature() {
@@ -47,7 +49,7 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     }
     public void setTemperature(double temp) {
         this.temperature = temp;
-        this.notifier();
+        notifier();
     }
 
     public abstract double getTempMoy();
@@ -68,6 +70,14 @@ public abstract class CapteurAbstrait extends Sujet implements Runnable{
     }
     public void setGenerationStrategie(IGenerationStrategie generation) {
         this.generationStrategie = generation;
+    }
+
+    public boolean isActive() {
+        return this.active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public abstract Node display(CapteurAbstrait c, MainWindow mainWindow) throws IOException;
